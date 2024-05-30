@@ -40,6 +40,6 @@ Book Details -
 ## Functionality
 
 - **You can add/Edit Logo & Hero Content of your website**
-- ** You can add, edit, and delete book categories.**
-- ** You can add, edit, and delete books and Its Details**
+- **You can add, edit, and delete book categories**
+- **You can add, edit, and delete books and Its Details**
 
