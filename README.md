@@ -22,7 +22,7 @@ Book Listing -
 
 Book Details - 
 
-![Admin Panel](BookByte---Admin-Panel/assets/book_details.png)
+![Admin Panel](BookByte - Admin Panel/assets/book_details.png)
 
 ## Technologies Used
 
