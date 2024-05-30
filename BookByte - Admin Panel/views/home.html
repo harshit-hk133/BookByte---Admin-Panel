@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between">
+          <p class="fw-bold">Featured Image</p>
+          <button type="button" class="btn btn-secondary btn-sm">Change</button>
+        </div>
+        <div class="card-body">
+          <img src="../Images/featuredImage.jpg" class="card-img-top" alt="featuredImage">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card bg-dark h-100">
+        <div class="card-header d-flex justify-content-between">
+          <p class="fw-bold text-bg-dark">Existing Logo</p>
+          <button type="button" class="btn btn-secondary btn-sm">Change</button>
+        </div>
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <img src="Images/logo/logo-no-background.png" class="card-img-top" alt="logo">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between">
+          <p class="fw-bold">Tagline</p>
+          <button type="button" class="btn btn-secondary btn-sm">Change</button>
+        </div>
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <h4>Your Story Starts Here...</h4>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <h3 class="mt-5">About Content</h3>
+  <div class="card">
+    <div class="card-header">Existing Content</div>
+    <div class="card-body">
+      <!-- <div ng-bind-html="about"></div> -->
+      <form>
+        <div class="mb-3">
+          <label for="aboutText" class="form-label">Update text</label>
+          <ng-quill-editor
+            id="aboutText"
+            name="about"
+            ng-model="homeData.about"
+          ></ng-quill-editor>
+        </div>
+        <button type="submit" class="btn btn-sm btn-dark">Update</button>
+      </form>
+    </div>
+  </div>
+</div>

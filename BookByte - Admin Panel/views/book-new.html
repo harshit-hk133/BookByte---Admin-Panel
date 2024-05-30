@@ -1,0 +1,86 @@
+<div class="container pt-5 mb-5">
+  <form name="bookFrom" ng-submit="submitForm()" novalidate>
+      <h3 class="d-flex mb-3">
+          <span class="me-auto">Add your Book data</span>
+      </h3>
+      <div class="card">
+          <div class="card-body">
+              <div class="mb-3">
+                  <label for="title" class="col-form-label">Title:</label>
+                  <input type="text" class="form-control" name="title" id="title" ng-model="title" ng-required="true" />
+                  <div ng-show="bookFrom.title.$error && bookFrom.title.$touched && bookFrom.title.$invalid " class="text-danger"> Book Title is required.</div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="author" class="form-label">Author</label>
+                      <input type="text" class="form-control" name="author" id="author" ng-model="author" ng-required="true"/>
+                      <div ng-show="bookFrom.author.$error && bookFrom.author.$touched && bookFrom.author.$invalid " class="text-danger">Author Name is required.</div>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="publisher" class="form-label">Publisher</label>
+                      <input type="text" class="form-control" name="publisher"
+                       id="publisher" ng-model="publisher" ng-required="true" />
+                      <div ng-show="bookFrom.publisher.$error && bookFrom.publisher.$touched && bookFrom.publisher.$invalid " class="text-danger">Publisher is required.</div>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="language" class="form-label">Language</label>
+                      <input type="text" class="form-control" name="language" id="language" ng-model="language" ng-required="true" />
+                      <div ng-show="bookFrom.language.$error && bookFrom.language.$touched && bookFrom.language.$invalid " class="text-danger">language is required.</div>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="fimage" class="form-label">Feature Image</label>
+                      <!-- <input class="form-control" type="file" id="fimage" ng-model="featuredImage" /> -->
+                      <input type="text" class="form-control" name="fimage" id="fimage" placeholder="Provide Image relative path " ng-model="featuredImage" ng-required="true" >
+                      <div ng-show="bookFrom.fimage.$error && bookFrom.fimage.$touched && bookFrom.fimage.$invalid" class="text-danger">Featured-Image is required.</div>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="category" class="form-label">Category</label>
+                    <select class="form-select" name="category" id="category" ng-model="category" ng-change="updateButton()" ng-required="true" >
+                        <option value="" disabled>Select Category</option>
+                        <option value="Science fiction">Science fiction</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="History">History</option>
+                    </select>
+                    <div ng-show="bookFrom.category.$error && bookFrom.category.$touched && bookFrom.category.$invalid " class="text-danger">Category is required.</div>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="edition" class="form-label">Edition</label>
+                      <input class="form-control" name="edition" type="date" id="edition" ng-model="edition" ng-required="true" />
+                      <div ng-show="bookFrom.edition.$error && bookFrom.edition.$touched && bookFrom.edition.$invalid " class="text-danger">Edition is required.</div>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="isbn" class="form-label">ISBN</label>
+                      <input type="text" class="form-control" name="isbn" id="isbn" maxlength="13" ng-model="isbn" ng-required="true" />
+                      <div ng-show="bookFrom.isbn.$error && bookFrom.isbn.$touched && bookFrom.isbn.$invalid " class="text-danger">ISBN is required.</div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="pages" class="form-label">Pages</label>
+                          <input type="number" class="form-control" name="pages" id="pages" ng-model="pages" ng-required="true" />
+                          <div ng-show="bookFrom.pages.$error && bookFrom.pages.$touched && bookFrom.pages.$invalid " class="text-danger">Pages is required.</div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="price" class="form-label">Price(₹)</label>
+                      <input type="number" class="form-control" name="price" id="price" ng-model="price" ng-required="true" />
+                      <div ng-show="bookFrom.price.$error && bookFrom.price.$touched && bookFrom.price.$invalid " class="text-danger">Price is required.</div>
+                  </div>
+              </div>
+
+              <div class="mb-3">
+                  <label for="desc" class="col-form-label">Description</label>
+                  <ng-quill-editor id="desc" name="desc" ng-model="description" ng-required="true" ></ng-quill-editor>
+                  <div ng-show="bookFrom.desc.$error && bookFrom.desc.$touched && bookFrom.desc.$invalid " class="text-danger">Description is required.</div>
+              </div>
+              <a href="#!/books" class="btn btn-danger me-2"> Cancel </a>
+              <button type="submit" class="btn  btn-dark" ng-disabled="bookFrom.$invalid">Save changes</button>
+    
+          </div>
+      </div>
+  </form>
+</div>

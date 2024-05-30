@@ -1,0 +1,187 @@
+<div class="container pt-5 mb-5">
+  <h3 class="d-flex mb-3">
+    <span class="me-auto">Books</span>
+    <a href="#!/books/new" class="btn btn-outline-dark">Add New Book</a>
+  </h3>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Filter: </span>
+        <div class="btn-group btn-group-sm" role="group">
+          <input
+            type="radio"
+            class="btn-check"
+            name="filter"
+            id="filter1"
+            value="title"
+            ng-model="searchType"
+            checked
+          />
+          <label class="btn btn-outline-dark" for="filter1">Title</label>
+          <input
+            type="radio"
+            class="btn-check"
+            name="filter"
+            id="filter2"
+            value="edition"
+            ng-model="searchType"
+            checked
+          />
+          <label class="btn btn-outline-dark" for="filter2">Edition</label>
+          <input
+            type="radio"
+            class="btn-check"
+            name="filter"
+            id="filter3"
+            value="category"
+            ng-model="searchType"
+          />
+          <label class="btn btn-outline-dark" for="filter3">Category</label>
+        </div>
+        <input
+          type="search"
+          class="form-control"
+          id="filter-text"
+          vaule=""
+          ng-model="searchText"
+        />
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Image</th>
+          <th
+          >
+            Title
+          </th>
+          <th
+          >
+            Edition
+          </th>
+          <th>Price</th>
+          <th
+          >
+            Category
+          </th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="!books">
+          <td colspan="6">No records found...</td>
+        </tr>
+        <tr
+          ng-repeat="book in books | searchFilter:searchType:searchText" 
+        >
+          <td>{{$index+1}}</td>
+          <td>
+            <img
+              class="img-thumbnail"
+              src="{{book.image}}"
+              alt=""
+              width="100"
+            />
+          </td>
+          <td>{{book.title}}</td>
+          <td>{{book.edition}}</td>
+          <td>{{book.price}}</td>
+          <td>{{book.category}}</td>
+          <td width="150px">
+            <div class="btn-group btn-group-sm">
+              <a
+                href="#!/books/details/{{book.id}}"
+                class="btn btn-sm"
+                title="Details"
+              >
+                <i class="fa fa-id-card"  style="color: #18900f;"></i>
+              </a>
+              <a
+                href="#!/books/edit/{{book.id}}"
+                class="btn btn-sm"
+                title="Edit"
+              >
+              <i class="fa-solid fa-pen-to-square" style="color: #FFD43B;"></i>             
+
+              </a>
+              <button
+                type="button"
+                class="btn btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteBookModal"
+                title="Delete"
+                ng-click="selectBook(book.id)"
+              >
+              <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="deleteBookModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Book</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <p class="book-title">Title: {{selectedBook.title}}</p>
+          <p>Are you sure! you want to delete this Book?</p>
+          <input type="hidden" class="form-control" id="aid" />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            class="btn btn-danger"
+            ng-click="deleteBook()"
+            data-bs-dismiss="modal"
+          >
+            Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  const deleteBookModal = document.getElementById("deleteBookModal");
+  if (deleteBookModal) {
+    deleteBookModal.addEventListener("show.bs.modal", (event) => {
+      const button = event.relatedTarget;
+      const bid = button.getAttribute("data-bs-bid");
+      const bIdInput = deleteBookModal.querySelector(".modal-body #bid");
+      bIdInput.value = bid;
+      const title = button.getAttribute("data-bs-title");
+      const bTitleInput = deleteBookModal.querySelector(
+        ".modal-body .book-title"
+      );
+      bTitleInput.innerHTML = `Title: ${title}`;
+    });
+  }
+</script>

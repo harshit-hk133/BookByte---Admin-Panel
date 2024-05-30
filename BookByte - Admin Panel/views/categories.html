@@ -1,0 +1,146 @@
+<div class="container pt-5 mb-5">
+  <h3 class="d-flex mb-3">
+    <span class="me-auto">Categories</span>
+    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addNewCatModal">
+      Add New Category
+    </button>
+  </h3>
+  <div class="card">
+    <div class="card-header">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Filter: </span>
+        <div class="btn-group btn-group-sm" role="group">
+          <input type="radio" class="btn-check" name="filter" id="filter1" value="title" ng-model="searchType" />
+          <label class="btn btn-outline-dark" for="filter1">Title</label>
+          <input type="radio" class="btn-check" name="filter" id="filter2" value="createdOn" ng-model="searchType" />
+          <label class="btn btn-outline-dark" for="filter2">Created On</label>
+        </div>
+        <input type="search" class="form-control" id="filter-text" vaule="" ng-model="searchText" />
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>
+            Title
+          </th>
+          <th>
+            Created On
+          </th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="!categories">
+          <td colspan="4">No records found...</td>
+        </tr>
+        <tr ng-repeat="category in categories | searchFilter:searchType:searchText">
+          <td>{{$index+1}}</td>
+          <td>{{category.title}}</td>
+          <td>{{category.createdOn}}</td>
+          <td width="150px">
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#editCatModal" title="Edit"
+                ng-click="selectCategory(category.id)">
+                <i class="fa-solid fa-pen-to-square" style="color: #FFD43B;"></i>
+                <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCatModal" title="Delete"
+                  ng-click="selectCategory(category.id)">
+                  <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="addNewCatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form name="frmAddCategory" ng-submit="addNewCategory()" novalidate>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="title" class="col-form-label">Title:<span class="text-red">*</span></label>
+            <input type="text" class="form-control" name="title" id="title"
+              ng-class="{'is-invalid': frmAddCategory.title.$touched && frmAddCategory.title.$invalid }"
+              ng-model="newCategory.title" ng-required="true" />
+            <div
+              ng-show="frmAddCategory.title.$error && frmAddCategory.title.$touched && frmAddCategory.title.$invalid "
+              class="text-danger">Title is required.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" ng-disabled="frmAddCategory.$invalid">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editCatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form name="frmEditCategory" ng-submit="updateCategory()" novalidate>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="title" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" name="title" ng-required="true" id="title"
+              ng-model="selectedCategory.title"
+              ng-class="{'is-invalid': frmEditCategory.title.$touched && frmEditCategory.title.$invalid }" />
+            <div
+              ng-show="frmEditCategory.title.$error && frmEditCategory.title.$touched && frmEditCategory.title.$invalid "
+              class="text-danger">Title is required.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" ng-disabled="frmEditCategory.$invalid">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteCatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure! you want to delete '{{selectedCategory.title}}'
+          category?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button class="btn btn-danger" ng-click="deleteCategory()" data-bs-dismiss="modal">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

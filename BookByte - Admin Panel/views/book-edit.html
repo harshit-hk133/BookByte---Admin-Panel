@@ -1,0 +1,99 @@
+<div class="container pt-5 mb-5" ng-controller="bookEditCtrl">
+  <h3 class="mb-3">Edit Book</h3>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Edit Feature Image</div>
+        <img src="{{books[bookId-1].image}}" class="card-img-bottom" alt="..." />
+        <div class="card-body">
+          <form action="#!/books" ng-submit="submitForm()">
+            <div class="mb-3">
+              <label for="image" class="form-label">Feature Image</label>
+              <input class="form-control" type="file" id="image" />
+            </div>
+            <button type="submit" class="btn btn-sm btn-dark">
+              Save changes
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <form action="#!/books" name="bookEditFrom" ng-submit="submitForm()">
+        <input type="hidden" id="id" value="{{books[bookId-1].id}}" />
+        <div class="card">
+          <div class="card-header">Edit your Book Data</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="title" class="col-form-label">Title:</label>
+              <input type="text" class="form-control" name="title" id="title" ng-model="books[bookId-1].title" ng-required="true"/>
+              <div ng-show="bookEditFrom.title.$error && bookEditFrom.title.$touched && bookEditFrom.title.$invalid " class="text-danger"> Book Title is required.</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" name="author" id="author" ng-model="books[bookId-1].author" ng-required="true"/>
+                <div ng-show="bookEditFrom.author.$error && bookEditFrom.author.$touched && bookEditFrom.author.$invalid " class="text-danger">Author Name is required.</div>
+              </div>
+              <div class="col-md-4">
+                <label for="publisher" class="form-label">Publisher</label>
+                <input type="text" class="form-control" name="publisher" id="publisher" ng-model="books[bookId-1].publisher" ng-required="true"/> 
+                <div ng-show="bookEditFrom.publisher.$error && bookEditFrom.publisher.$touched && bookEditFrom.publisher.$invalid " class="text-danger">Publisher is required.</div> 
+              </div>
+              <div class="col-md-4">
+                <label for="language" class="form-label">Language</label>
+                <input type="text" class="form-control" name="language" id="language" ng-model="books[bookId-1].language" ng-required="true"/>
+                <div ng-show="bookEditFrom.language.$error && bookEditFrom.language.$touched && bookEditFrom.language.$invalid " class="text-danger">language is required.</div>  
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" name="category" id="category" ng-model="books[bookId-1].category" ng-required="true">
+                  <option value="" disabled>Select Category</option>
+                  <option value="Science Fiction">Science Fiction</option>
+                  <option value="Biography">Biography</option>
+                  <option value="Mystery">Mystery</option>
+                  <option value="History">History</option>
+              </select>
+              <div ng-show="bookEditFrom.category.$error && bookEditFrom.category.$touched && bookEditFrom.category.$invalid " class="text-danger">Category is required.</div>
+              </div>
+              <div class="col-md-4">
+                <label for="edition" class="form-label">Edition</label>
+                <input class="form-control" type="date" name="edition" id="edition" ng-model="books[bookId-1].edition" ng-required="true"/>
+                <div ng-show="bookEditFrom.edition.$error && bookEditFrom.edition.$touched && bookEditFrom.edition.$invalid " class="text-danger">Edition is required.</div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="isbn" class="form-label">ISBN</label>
+                <input type="text" class="form-control" name="isbn" id="isbn" maxlength="13" ng-model="books[bookId-1].ISBN" ng-required="true"/>
+                <div ng-show="bookEditFrom.isbn.$error && bookEditFrom.isbn.$touched && bookEditFrom.isbn.$invalid " class="text-danger">ISBN is required.</div>
+              </div>
+              <div class="col-md-4">
+                <label for="pages" class="form-label">Pages</label>
+                <input type="number" class="form-control" name="pages" id="pages" ng-model="books[bookId-1].pages" ng-required="true"/> 
+                <div ng-show="bookEditFrom.pages.$error && bookEditFrom.pages.$touched && bookEditFrom.pages.$invalid " class="text-danger">Pages is required.</div> 
+              </div>
+              <div class="col-md-4">
+                <label for="price" class="form-label">Price(₹)</label>
+                <input type="text" class="form-control" name="price" id="price" ng-model="books[bookId-1].price" ng-required="true"/>
+                <div ng-show="bookEditFrom.price.$error && bookEditFrom.price.$touched && bookEditFrom.price.$invalid " class="text-danger">Price is required.</div>  
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="desc" class="col-form-label">Description</label>
+              <ng-quill-editor id="desc" name="desc" ng-model="books[bookId-1].description" ng-required="true"></ng-quill-editor>
+              <div ng-show="bookEditFrom.desc.$error && bookEditFrom.desc.$touched && bookEditFrom.desc.$invalid " class="text-danger">Description is required.</div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-dark" ng-disabled="bookEditFrom.$invalid">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
