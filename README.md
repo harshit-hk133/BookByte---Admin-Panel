@@ -6,7 +6,7 @@ This project is an admin panel developed using AngularJS. It facilitates various
 
 Login - 
 
-![login_page](BookByte-Admin-Panel/assets/login.png)
+![login_page](./BookByte%20-%20Admin%20Panel/assets/login.png)
 
 Home - 
 
@@ -37,4 +37,9 @@ Book Details -
 - **Detailed Book View**: View detailed information about each book.
 - **Category Management**: Add, edit, and delete book categories.
 
+## Functionality
+
+- **You can add/Edit Logo & Hero Content of your website**
+- ** You can add, edit, and delete book categories.**
+- ** You can add, edit, and delete books and Its Details**
 
