@@ -6,23 +6,23 @@ This project is an admin panel developed using AngularJS. It facilitates various
 
 Login - 
 
-![Admin Panel](BookByte---Admin-Panel/assets/login.png)
+![login_page](BookByte-Admin-Panel/assets/login.png)
 
 Home - 
 
-![Admin Panel](BookByte---Admin-Panel/assets/home.png)
+![home_page](BookByte-Admin-Panel/assets/home.png)
 
 Category Listing - 
 
-![Admin Panel](BookByte---Admin-Panel/assets/category_listing.png)
+![category_listing](BookByte-Admin-Panel/assets/category_listing.png)
 
 Book Listing - 
 
-![Admin Panel](BookByte---Admin-Panel/assets/book_listing.png)
+![book_listing](BookByte-Admin-Panel/assets/book_listing.png)
 
 Book Details - 
 
-![Admin Panel](BookByte---Admin-Panel/assets/book_details.png)
+![book_details](BookByte-Admin-Panel/assets/book_details.png)
 
 ## Technologies Used
 
