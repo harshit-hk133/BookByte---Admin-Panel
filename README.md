@@ -10,18 +10,18 @@ Login -
 
 Home - 
 
-![home_page](BookByte-Admin-Panel/assets/home.png)
+![home_page](./BookByte%20-%20Admin%20Panel/assets/home.png)
 
 Category Listing - 
 
-![category_listing](BookByte-Admin-Panel/assets/category_listing.png)
+![category_listing](./BookByte%20-%20Admin%20Panel/assets/category_listing.png)
 
 Book Listing - 
 
-![book_listing](BookByte%20-%20Admin%20Panel/assets/book_listing.png)
+![book_listing](./BookByte%20-%20Admin%20Panel/assets/book_listing.png)
 
 Book Details - 
-BookByte - Admin Panel/assets/book_details.png
+
 ![book_details](./BookByte%20-%20Admin%20Panel/assets/book_details.png)
 
 ## Technologies Used
