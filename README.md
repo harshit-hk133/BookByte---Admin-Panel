@@ -18,7 +18,7 @@ Category Listing -
 
 Book Listing - 
 
-![book_listing](BookByte-Admin-Panel/assets/book_listing.png)
+![book_listing](BookByte%20-%20Admin%20Panel/assets/book_listing.png)
 
 Book Details - 
 BookByte - Admin Panel/assets/book_details.png
