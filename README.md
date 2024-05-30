@@ -36,6 +36,7 @@ Book Details -
 - **Dynamic Book Listing Page**: View a list of books with options to add, edit, and delete entries.
 - **Detailed Book View**: View detailed information about each book.
 - **Category Management**: Add, edit, and delete book categories.
+- **Filter**: you can filter category based on title and Created On, you can also filter books based on Category,title and Edition.
 
 ## Functionality
 
